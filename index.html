@@ -36,7 +36,7 @@
         }
 
         .hero {
-            background: url('https://source.unsplash.com/random/1600x900') no-repeat center center/cover;
+            background: url('./assets/images/Recommendations.png') no-repeat center center/cover;
             color: white;
             text-align: center;
             padding: 4rem 1rem;
@@ -57,35 +57,10 @@
             height: auto;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        form label {
-            margin-top: 1rem;
-            text-align: left;
-        }
-
-        form input, form textarea, form button {
-            margin-top: 0.5rem;
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        form button {
-            background-color: #004d40;
-            color: white;
+        iframe {
+            width: 100%;
             border: none;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
-        form button:hover {
-            background-color: #00332c;
+            height: 100vh; /* Adjust height as needed */
         }
 
         footer {
@@ -93,6 +68,29 @@
             color: white;
             padding: 1rem 0;
             text-align: center;
+        }
+
+        /* Styling the container around the iframe */
+        .iframe-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Additional styles for better integration */
+        .google-form-wrapper {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -117,12 +115,12 @@
     <section id="services">
         <h2>Our Services</h2>
         <div class="service">
-            <img src="https://source.unsplash.com/random/800x600" alt="Service Image">
+            <img src="./assets/images/datatable.png" alt="Service Image">
             <h3>Real-time Data Tables</h3>
             <p>We provide data tables as a service to help you manage real-time data efficiently.</p>
         </div>
         <div class="service">
-            <img src="https://source.unsplash.com/random/800x600" alt="Service Image">
+            <img src="./assets/images/metrics.jpg" alt="Service Image">
             <h3>FinOps Solutions</h3>
             <p>Our FinOps solutions help you track usage, reduce costs, and minimize CO2 emissions.</p>
         </div>
@@ -130,11 +128,23 @@
 
     <section id="contact">
         <h2>Contact Us</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdBfr239EHekGF7VO_TVbAATJXr4ukaceRtnvzWmPC8pxOLBQ/viewform?embedded=true" width="640" height="677" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <div class="google-form-wrapper iframe-container">
+            <iframe src="YOUR_GOOGLE_FORM_EMBED_URL"></iframe>
+        </div>
     </section>
 
     <footer>
         <p>&copy; 2024 Jade Terra Tech. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Adjust iframe height based on its content
+        document.addEventListener('DOMContentLoaded', function() {
+            var iframe = document.querySelector('iframe');
+            iframe.onload = function() {
+                iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+            };
+        });
+    </script>
 </body>
 </html>
